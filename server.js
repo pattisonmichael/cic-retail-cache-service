@@ -8,7 +8,7 @@ var { expressjwt: jwt } = require("express-jwt");
 var jwks = require('jwks-rsa');
 
 // Server port
-var HTTP_PORT = 8000 
+var HTTP_PORT = process.env.PORT || 8000 ;
 
 var jwtCheck = jwt({
     secret: jwks.expressJwtSecret({
