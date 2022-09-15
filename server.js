@@ -144,7 +144,7 @@ app.delete("/api/user/:id", (req, res, next) => {
 //ORDERS
 // Insert here other API endpoints
 app.get("/api/orders", (req, res, next) => {
-    console.log(req)
+    //console.log(req)
     var sql = "select * from orders"
     var params = []
     db.all(sql, params, (err, rows) => {
