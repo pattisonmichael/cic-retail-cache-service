@@ -254,15 +254,16 @@ app.patch("/api/order/:id", (req, res, next) => {
     var data = {
         order_id: req.params.id,
         payed: req.body.payed,
-        password : req.body.password ? md5(req.body.password) : null
+        order_date : req.body.order_date
     }
-    console.log("Update data: " + data.name)
+    console.log("Update data: " + data.order_id)
     console.log(data)
     db.run(
         `UPDATE orders set 
-           payed password = COALESCE(?,payed) 
+           payed = COALESCE(?,payed) ,
+           order_date = COALESCE(?,order_date)
            WHERE order_id = ?`,
-        [data.name, data.email, data.password, req.params.id],
+        [data.payed, data.order_date, data.order_id],
         function (err, result) {
             if (err){
                 res.status(400).json({"error": res.message})

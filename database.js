@@ -40,7 +40,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 // Table already created
             }else{
                 // Table just created, creating some rows
-                var insert = 'INSERT INTO orders (order_date,userid) VALUES (?,?,?)';
+                var insert = 'INSERT INTO orders (order_date,payed,userid) VALUES (?,?,?)';
                 db.run(insert, ["2022-09-14 10:00:00","FALSE",1]);
             }
         });  
