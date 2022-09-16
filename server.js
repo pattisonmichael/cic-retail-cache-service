@@ -2,6 +2,7 @@
 var express = require("express")
 var app = express()
 var db = require("./database.js")
+var cors = require('cors')
 //var md5 = require("md5")
 //var jwt = require('express-jwt');
 var { expressjwt: jwt } = require("express-jwt");
@@ -21,7 +22,7 @@ var jwtCheck = jwt({
   issuer: 'https://cic-retail-demo-hackathon.eu.auth0.com/',
   algorithms: ['RS256']
 });
-
+app.use(cors());
 app.use(jwtCheck);
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
